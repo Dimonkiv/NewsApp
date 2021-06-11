@@ -26,7 +26,7 @@ object RetrofitBuilder {
             .writeTimeout(TIME_OUT, TimeUnit.SECONDS)
             .readTimeout(TIME_OUT, TimeUnit.SECONDS)
             .addInterceptor(httpLoggingInterceptor)
-            .addInterceptor(AuthInterceptor())
+            //.addInterceptor(AuthInterceptor())
             .build()
     }
 

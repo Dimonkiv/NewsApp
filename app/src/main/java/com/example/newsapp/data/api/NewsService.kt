@@ -3,6 +3,7 @@ package com.example.newsapp.data.api
 import com.example.newsapp.data.model.NewsResponse
 import io.reactivex.Flowable
 import retrofit2.http.GET
+import retrofit2.http.Header
 import retrofit2.http.Query
 
 /**
@@ -10,5 +11,8 @@ import retrofit2.http.Query
  */
 interface NewsService {
     @GET("/v1/news")
-    fun fetchNews(@Query("language") lang: String): Flowable<NewsResponse>
+    fun fetchNews(
+        @Header("x-api-key") apiKey: String,
+        @Query("language") lang: String
+    ): Flowable<NewsResponse>
 }

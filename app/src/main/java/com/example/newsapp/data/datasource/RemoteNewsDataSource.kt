@@ -9,9 +9,9 @@ import io.reactivex.Single
  */
 class RemoteNewsDataSource(private val newsService: NewsService) {
 
-    fun fetchNews(lang: String): Single<List<News>> {
+    fun fetchNews(apiKey: String, lang: String): Single<List<News>> {
         return newsService
-            .fetchNews(lang)
+            .fetchNews(apiKey, lang)
             .map { return@map it.news }
             .firstOrError();
     }
