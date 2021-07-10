@@ -1,11 +1,15 @@
 package com.example.newsapp.data.model
 
+import androidx.room.Entity
+import androidx.room.PrimaryKey
 import com.google.gson.annotations.SerializedName
 
 /**
  * Created by ivankiv on 29,April,2021
  */
+@Entity
 data class News(
+    @PrimaryKey(autoGenerate = true) val id: Long,
     @SerializedName("url") val url: String,
     @SerializedName("source") val source: String,
     @SerializedName("title") val title: String,
