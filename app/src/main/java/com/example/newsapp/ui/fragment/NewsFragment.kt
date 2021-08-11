@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.LinearLayout
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -12,6 +11,7 @@ import com.example.newsapp.R
 import com.example.newsapp.data.model.News
 import com.example.newsapp.databinding.NewsFragmentBinding
 import com.example.newsapp.presenter.NewsPresenter
+import com.example.newsapp.ui.App
 import com.example.newsapp.ui.adapter.NewsAdapter
 import com.example.newsapp.ui.view.NewsView
 
@@ -45,7 +45,7 @@ class NewsFragment : Fragment(), NewsView {
     }
 
     private fun createPresenter() {
-        presenter = NewsPresenter()
+        presenter = NewsPresenter((context?.applicationContext as App).provideNewsRepository())
         presenter.attachView(this)
     }
 

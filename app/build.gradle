@@ -39,7 +39,7 @@ android {
 
 ext {
     retrofitVersion = '2.5.0'
-    okHttpVersion = '3.14.1'
+    okHttpVersion = '4.9.1'
     rxJavaVersion = '2.2.10'
     rxAndroid = '2.1.1'
     glideVersion = '4.12.0'
@@ -80,5 +80,5 @@ dependencies {
     //Room
     implementation "androidx.room:room-rxjava2:$room_version"
     implementation "androidx.room:room-runtime:$room_version"
-    annotationProcessor "androidx.room:room-compiler:$room_version"
+    kapt "androidx.room:room-compiler:$room_version"
 }

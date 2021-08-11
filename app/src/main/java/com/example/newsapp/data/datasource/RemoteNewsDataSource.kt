@@ -2,6 +2,7 @@ package com.example.newsapp.data.datasource
 
 import com.example.newsapp.data.api.NewsService
 import com.example.newsapp.data.model.News
+import io.reactivex.Observable
 import io.reactivex.Single
 
 /**
@@ -9,10 +10,11 @@ import io.reactivex.Single
  */
 class RemoteNewsDataSource(private val newsService: NewsService) {
 
-    fun fetchNews(apiKey: String, lang: String): Single<List<News>> {
+    fun fetchNews(apiKey: String, lang: String): Observable<List<News>> {
         return newsService
             .fetchNews(apiKey, lang)
-            .map { return@map it.news }
-            .firstOrError();
+            .map {
+                return@map it.news
+            }
     }
 }

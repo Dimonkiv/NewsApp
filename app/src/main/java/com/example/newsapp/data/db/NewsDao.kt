@@ -5,6 +5,7 @@ import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.Query
 import com.example.newsapp.data.model.News
+import io.reactivex.Completable
 import io.reactivex.Single
 
 /**
@@ -20,8 +21,8 @@ interface NewsDao {
     fun getNewsById(id: Long): Single<News>
 
     @Insert
-    fun insert(news: News): Single<Long>
+    fun insert(news: News): Completable
 
     @Delete
-    fun delete(news: News): Single<Long>
+    fun deleteAll(news: List<News>)
 }
