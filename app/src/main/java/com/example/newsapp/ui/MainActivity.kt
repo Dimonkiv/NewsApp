@@ -15,13 +15,13 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
-        addFragment(NewsFragment.instance())
+        replaceFragment(NewsFragment.instance())
     }
 
-    fun addFragment(fragment: Fragment) {
+    fun replaceFragment(fragment: Fragment) {
         supportFragmentManager
             .beginTransaction()
-            .add(R.id.container, fragment)
+            .replace(R.id.container, fragment)
             .addToBackStack(null)
             .commit()
     }

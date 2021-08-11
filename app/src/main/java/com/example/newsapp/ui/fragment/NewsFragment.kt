@@ -7,18 +7,21 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.newsapp.NewsClickListener
 import com.example.newsapp.R
 import com.example.newsapp.data.model.News
 import com.example.newsapp.databinding.NewsFragmentBinding
 import com.example.newsapp.presenter.NewsPresenter
 import com.example.newsapp.ui.App
+import com.example.newsapp.ui.MainActivity
 import com.example.newsapp.ui.adapter.NewsAdapter
 import com.example.newsapp.ui.view.NewsView
 
 /**
  * Created by ivankiv on 11,June,2021
  */
-class NewsFragment : Fragment(), NewsView {
+class NewsFragment : Fragment(),
+    NewsView, NewsClickListener {
 
     private lateinit var binding: NewsFragmentBinding
     private lateinit var presenter: NewsPresenter
@@ -51,7 +54,11 @@ class NewsFragment : Fragment(), NewsView {
 
     override fun displayNews(items: List<News>) {
         binding.recyclerView.layoutManager = LinearLayoutManager(context)
-        val adapter = NewsAdapter(items)
+        val adapter = NewsAdapter(items, this)
         binding.recyclerView.adapter = adapter
+    }
+
+    override fun onNewsClick(id: Long) {
+        (activity as MainActivity).replaceFragment(NewsDetailFragment.instance(id))
     }
 }

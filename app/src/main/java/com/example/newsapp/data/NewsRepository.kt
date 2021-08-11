@@ -24,6 +24,9 @@ class NewsRepository(
             .flatMap { items ->
                 return@flatMap localDataSource.writeNews(items)
             }
+            .flatMap {
+                return@flatMap localDataSource.fetchNews()
+            }
     }
 
     fun fetchNewsById(id: Long): Single<News> {
